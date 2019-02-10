@@ -1,7 +1,10 @@
-console.log("hello, world");
+import Vue from 'vue/dist/vue.js'
 
-var dog = "wisdom";
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+});
 
-if (dog === "wisdom") {
-  console.log("bah");
-}
+window.app = app;
