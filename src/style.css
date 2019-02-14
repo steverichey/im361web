@@ -1,0 +1,76 @@
+html {
+  background: black;
+  color: white;
+}
+
+a:hover {
+  border: 1px solid red;
+  background: yellow;
+  font-size: 10em;
+}
+
+ul {
+  width: 100vw;
+}
+
+b {
+  font-weight: 1000;
+}
+
+button {
+  background-color: cyan;
+  height: 64px;
+  width: 10em;
+  color: yellow;
+  border: 5px dashed pink;
+}
+
+a:after {
+  content: "Aaaaaa";
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+li {
+  float: left;
+  list-style-type: none;
+}
+
+p {
+  background-color: green;
+}
+
+ul {
+  background-color: red;
+  border: 2px solid pink;
+  padding: 4px 2px 64px 8px;
+  margin: 1em 2em 3em 4em;
+}
+
+h1 {
+  font-family: fantasy;
+  color: yellow;
+}
+
+h2 {
+  color: red;
+  font-family: cursive;
+}
+
+h3 {
+  color: magenta;
+  font-family: monospace;
+}
+
+span {
+  background: purple;
+  color: red;
+}
+
+footer {
+  width: 100vh;
+  background-color: pink;
+  font-family: cursive;
+  font-weight: lighter;
+  color: cyan;
+}
