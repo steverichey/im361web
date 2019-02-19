@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./fonts/coiny.ttf":
+/*!*************************!*\
+  !*** ./fonts/coiny.ttf ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"07592f3c41d6b637f5a8245052beda97.ttf\";\n\n//# sourceURL=webpack:///./fonts/coiny.ttf?");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/style.css":
 /*!*************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
@@ -93,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"html {\\n  background: black;\\n  color: white;\\n}\\n\\na:hover {\\n  border: 1px solid red;\\n  background: yellow;\\n  font-size: 10em;\\n}\\n\\nul {\\n  width: 100vw;\\n}\\n\\nb {\\n  font-weight: 1000;\\n}\\n\\nbutton {\\n  background-color: cyan;\\n  height: 64px;\\n  width: 10em;\\n  color: yellow;\\n  border: 5px dashed pink;\\n}\\n\\na:after {\\n  content: \\\"Aaaaaa\\\";\\n  box-sizing: border-box;\\n  display: inline-block;\\n}\\n\\nli {\\n  float: left;\\n  list-style-type: none;\\n}\\n\\np {\\n  background-color: green;\\n}\\n\\nul {\\n  background-color: red;\\n  border: 2px solid pink;\\n  padding: 4px 2px 64px 8px;\\n  margin: 1em 2em 3em 4em;\\n}\\n\\nh1 {\\n  font-family: fantasy;\\n  color: yellow;\\n}\\n\\nh2 {\\n  color: red;\\n  font-family: cursive;\\n}\\n\\nh3 {\\n  color: magenta;\\n  font-family: monospace;\\n}\\n\\nspan {\\n  background: purple;\\n  color: red;\\n}\\n\\nfooter {\\n  width: 100vh;\\n  background-color: pink;\\n  font-family: cursive;\\n  font-weight: lighter;\\n  color: cyan;\\n}\\n\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Imports\nvar urlEscape = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/url-escape.js */ \"./node_modules/css-loader/dist/runtime/url-escape.js\");\nvar ___CSS_LOADER_URL___0___ = urlEscape(__webpack_require__(/*! ../fonts/coiny.ttf */ \"./fonts/coiny.ttf\"));\n\n// Module\nexports.push([module.i, \"/* @font-face {\\n  font-family: \\\"CoolS\\\";\\n  src: url(\\\"./CoolS-Regular.otf\\\") format(\\\"truetype\\\");\\n} */\\n\\n@font-face {\\n  font-family: 'Coiny Regular';\\n  src: url(\" + ___CSS_LOADER_URL___0___ + \");\\n  font-weight: 600;\\n  font-style: normal;\\n}\\n\\n.cool {\\n  color: red;\\n  font-family: 'Coiny Regular';\\n}\\n\\nhtml {\\n  background: #eee;\\n  color: #111;\\n  font-family: sans-serif;\\n  font-size: 16px;\\n  line-height: 1.16em;\\n}\\n\\n.appdiv {\\n  max-width: 560px;\\n  margin: 0 auto;\\n}\\n\\nheader ul {\\n  height: 32px;\\n  width: 90%;\\n  background: grey;\\n  list-style: none;\\n}\\n\\nheader ul li {\\n  width: 25%;\\n  float: left;\\n}\\n\\nheader ul li a {\\n  color: white;\\n}\\n\\nheader ul li a:hover {\\n  color: cyan;\\n}\\n\\nfooter {\\n  background: #ddd;\\n  color: #000;\\n  height: 64px;\\n  margin: 1em;\\n  padding: 1em;\\n  border: 4px solid black;\\n}\\n\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -106,6 +117,18 @@ eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loa
 
 "use strict";
 eval("\n\n/*\n  MIT License http://www.opensource.org/licenses/mit-license.php\n  Author Tobias Koppers @sokra\n*/\n// css base code, injected by the css-loader\nmodule.exports = function (useSourceMap) {\n  var list = []; // return the list of modules as css string\n\n  list.toString = function toString() {\n    return this.map(function (item) {\n      var content = cssWithMappingToString(item, useSourceMap);\n\n      if (item[2]) {\n        return '@media ' + item[2] + '{' + content + '}';\n      } else {\n        return content;\n      }\n    }).join('');\n  }; // import a list of modules into the list\n\n\n  list.i = function (modules, mediaQuery) {\n    if (typeof modules === 'string') {\n      modules = [[null, modules, '']];\n    }\n\n    var alreadyImportedModules = {};\n\n    for (var i = 0; i < this.length; i++) {\n      var id = this[i][0];\n\n      if (id != null) {\n        alreadyImportedModules[id] = true;\n      }\n    }\n\n    for (i = 0; i < modules.length; i++) {\n      var item = modules[i]; // skip already imported module\n      // this implementation is not 100% perfect for weird media query combinations\n      // when a module is imported multiple times with different media queries.\n      // I hope this will never occur (Hey this way we have smaller bundles)\n\n      if (item[0] == null || !alreadyImportedModules[item[0]]) {\n        if (mediaQuery && !item[2]) {\n          item[2] = mediaQuery;\n        } else if (mediaQuery) {\n          item[2] = '(' + item[2] + ') and (' + mediaQuery + ')';\n        }\n\n        list.push(item);\n      }\n    }\n  };\n\n  return list;\n};\n\nfunction cssWithMappingToString(item, useSourceMap) {\n  var content = item[1] || '';\n  var cssMapping = item[3];\n\n  if (!cssMapping) {\n    return content;\n  }\n\n  if (useSourceMap && typeof btoa === 'function') {\n    var sourceMapping = toComment(cssMapping);\n    var sourceURLs = cssMapping.sources.map(function (source) {\n      return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */';\n    });\n    return [content].concat(sourceURLs).concat([sourceMapping]).join('\\n');\n  }\n\n  return [content].join('\\n');\n} // Adapted from convert-source-map (MIT)\n\n\nfunction toComment(sourceMap) {\n  // eslint-disable-next-line no-undef\n  var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));\n  var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;\n  return '/*# ' + data + ' */';\n}\n\n//# sourceURL=webpack:///./node_modules/css-loader/dist/runtime/api.js?");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/url-escape.js":
+/*!************************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/url-escape.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nmodule.exports = function escape(url, needQuotes) {\n  if (typeof url !== 'string') {\n    return url;\n  } // If url is already wrapped in quotes, remove them\n\n\n  if (/^['\"].*['\"]$/.test(url)) {\n    url = url.slice(1, -1);\n  } // Should url be wrapped?\n  // See https://drafts.csswg.org/css-values-3/#urls\n\n\n  if (/[\"'() \\t\\n]/.test(url) || needQuotes) {\n    return '\"' + url.replace(/\"/g, '\\\\\"').replace(/\\n/g, '\\\\n') + '\"';\n  }\n\n  return url;\n};\n\n//# sourceURL=webpack:///./node_modules/css-loader/dist/runtime/url-escape.js?");
 
 /***/ }),
 
@@ -194,7 +217,7 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var vue_dist_vue_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue/dist/vue.js */ \"./node_modules/vue/dist/vue.js\");\n/* harmony import */ var vue_dist_vue_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_dist_vue_js__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nvar app = new vue_dist_vue_js__WEBPACK_IMPORTED_MODULE_1___default.a({\n  el: '#app',\n  data: {\n    message: 'Hello Vue!'\n  }\n});\n\nwindow.app = app;\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var vue_dist_vue_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue/dist/vue.js */ \"./node_modules/vue/dist/vue.js\");\n/* harmony import */ var vue_dist_vue_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_dist_vue_js__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nvar app = new vue_dist_vue_js__WEBPACK_IMPORTED_MODULE_1___default.a({\n  el: '#app',\n  data: {\n    message: 'Hello Vue!',\n    isButtonDisabled: true,\n    options: [ \"Doge\", \"Doggo\", \"Woofer\", \"Pup\" ],\n    firstName: \"Steve\",\n    lastName: \"Richey\",\n    pageName: \"home\"\n  },\n  computed: {\n    fullName: function () {\n      return this.firstName + ' ' + this.lastName\n    }\n  }\n});\n\nwindow.app = app;\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 

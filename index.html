@@ -6,46 +6,71 @@
     <title>CSS Example Page</title>
   </head>
   <body>
-    <header>
-      <button>Click Me</button>
-      <nav>
+    <div id="app" class="appdiv">
+      <header>
+        <p><button v-on:click="isButtonDisabled = false">Click Me {{ message }}</button></p>
+        <p><button v-bind:disabled="isButtonDisabled">Click Me {{ message }}</button></p>
+        <nav>
+          <ul>
+            <li><a href="#home" v-on:click="pageName = 'home'">Home</a></li>
+            <li><a href="#about" v-on:click="pageName = 'about'">About</a></li>
+            <li><a href="#resources" v-on:click="pageName = 'resources'">Resources</a></li>
+            <li><a href="#help" v-on:click="pageName = 'help'">Help</a></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- First page -->
+      <main v-bind:hidden="pageName != 'home'">
+        <h1 class="cool">HOME</h1>
+        <p>This is the home page.</p>
+        <h4>The minion section</h4>
+        <p>Minions ipsum tatata bala tu hahaha pepete tulaliloo poopayee. <span class="applebees">Bappleees</span> bananaaaa po kass butt chasy pepete ti aamoo! Belloo! gelatooo tank yuuu! Poopayee <span class="applebees">bappleees</span> tulaliloo wiiiii. Butt poopayee la bodaaa bappleees la bodaaa potatoooo butt potatoooo tatata bala tu pepete. Para tú aaaaaah hahaha wiiiii ti aamoo! Tulaliloo tank yuuu! Jiji bananaaaa underweaaar. La bodaaa bananaaaa underweaaar la bodaaa underweaaar baboiii tank yuuu! Po kass pepete. Jeje baboiii pepete bee do bee do bee do jiji me want bananaaa! Potatoooo bappleees ti aamoo! Me want bananaaa!</p>
+        <p><span class="applebees">Bappleees</span> poulet tikka masala baboiii jiji. La bodaaa poopayee bananaaaa jeje chasy potatoooo tank yuuu! Hahaha daa daa uuuhhh. Tulaliloo jeje jeje hahaha pepete bappleees me want bananaaa! Chasy jiji potatoooo bananaaaa poopayee hahaha butt bee do bee do bee do ti aamoo! Tatata bala tu. La bodaaa para tú jeje daa ti aamoo! Po kass poopayee uuuhhh po kass daa bee do bee do bee do. Belloo! tulaliloo bee do bee do bee do bee do bee do bee do aaaaaah baboiii baboiii.</p>
+        <h5>Options</h5>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#resources">Resources</a></li>
-          <li><a href="#help">Help</a></li>
+          <li v-for="option in options">
+            {{ option }}
+          </li>
         </ul>
-      </nav>
-    </header>
-    <main>
-      <p>Here is a bunch of text. This text is <em>important</em>, but is it more important <strong>than this</strong>?</p>
-      <h1>About Us</h1>
-      <p>This is a whole different paragraph.</p>
-      <h2>An Ordered List</h2>
-      <p>Best dogs</p>
-      <ol>
-        <li>Bisley</li>
-        <li>Bisley, again</li>
-        <li>Still Bisley</li>
-        <li>Guess what: Bisley</li>
-      </ol>
-      <h3>Some buttons</h3>
-      <p>
-        <button>This button is neat</button>
-      </p>
-      <p>
-        <button>This button is bad, actually</button>
-      </p>
-      <p>
-        <button>The worst button</button>
-      </p>
-      <h4>The final section</h4>
-      <p>Minions ipsum tatata bala tu hahaha pepete tulaliloo poopayee. <span class="applebees">Bappleees</span> bananaaaa po kass butt chasy pepete ti aamoo! Belloo! gelatooo tank yuuu! Poopayee <span class="applebees">bappleees</span> tulaliloo wiiiii. Butt poopayee la bodaaa bappleees la bodaaa potatoooo butt potatoooo tatata bala tu pepete. Para tú aaaaaah hahaha wiiiii ti aamoo! Tulaliloo tank yuuu! Jiji bananaaaa underweaaar. La bodaaa bananaaaa underweaaar la bodaaa underweaaar baboiii tank yuuu! Po kass pepete. Jeje baboiii pepete bee do bee do bee do jiji me want bananaaa! Potatoooo bappleees ti aamoo! Me want bananaaa!</p>
-      <p><span class="applebees">Bappleees</span> poulet tikka masala baboiii jiji. La bodaaa poopayee bananaaaa jeje chasy potatoooo tank yuuu! Hahaha daa daa uuuhhh. Tulaliloo jeje jeje hahaha pepete bappleees me want bananaaa! Chasy jiji potatoooo bananaaaa poopayee hahaha butt bee do bee do bee do ti aamoo! Tatata bala tu. La bodaaa para tú jeje daa ti aamoo! Po kass poopayee uuuhhh po kass daa bee do bee do bee do. Belloo! tulaliloo bee do bee do bee do bee do bee do bee do aaaaaah baboiii baboiii.</p>
-    </main>
-    <footer>
-      You can blame this site on me, Steve.
-    </footer>
+      </main>
+      <!-- Second page -->
+      <main v-bind:hidden="pageName != 'about'">
+        <h1>About Us</h1>
+        <p>Here is a bunch of text. This text is <em>important</em>, but is it more important <strong>than this</strong>?</p>
+        <p>This is a whole different paragraph.</p>
+        <h2>An Ordered List</h2>
+        <p>Best dogs</p>
+        <ol>
+          <li>Bisley</li>
+          <li>Bisley, again</li>
+          <li>Still Bisley</li>
+          <li>Guess what: Bisley</li>
+        </ol>
+        <h3>Some buttons</h3>
+        <p>
+          <button v-on:click="pageNumber = 2">This button is neat</button>
+        </p>
+        <p>
+          <button>This button is bad, actually</button>
+        </p>
+        <p>
+          <button>The worst button</button>
+        </p>
+      </main>
+      <!-- Third page -->
+      <main v-bind:hidden="pageName != 'resources'">
+        <h1>Resources</h1>
+        <p>This is the resources page.</p>
+      </main>
+      <!-- Fourth page -->
+      <main v-bind:hidden="pageName != 'help'">
+        <h1>Help</h1>
+        <p>This is the help page.</p>
+      </main>
+      <footer>
+        You can blame this site on me, Steve.
+      </footer>
+    </div>
     <script src="./dist/main.js" type="text/javascript"></script>
   </body>
 </html>
