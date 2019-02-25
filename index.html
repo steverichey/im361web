@@ -3,13 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>CSS Example Page</title>
+    <title>Bapplebees</title>
   </head>
   <body>
     <div id="app" class="appdiv">
       <header>
-        <p><button v-on:click="isButtonDisabled = false">Click Me {{ message }}</button></p>
-        <p><button v-bind:disabled="isButtonDisabled">Click Me {{ message }}</button></p>
+        <button v-on:click="isButtonDisabled = false">Click to enable</button>
+        <button
+          v-on:click="isError = !isError"
+          v-bind:disabled="isButtonDisabled">
+          ERROR is {{ isError ? "ON" : "OFF" }}
+        </button>
         <nav>
           <ul>
             <li><a href="#home" v-on:click="pageName = 'home'">Home</a></li>
@@ -20,29 +24,34 @@
         </nav>
       </header>
       <!-- First page -->
-      <main v-bind:hidden="pageName != 'home'">
+      <main v-bind:hidden="pageName != 'home'" class="animated">
         <h1 class="cool">HOME</h1>
-        <p>This is the home page.</p>
+        <p class="fancy">This is the home page.</p>
         <h4>The minion section</h4>
-        <p>Minions ipsum tatata bala tu hahaha pepete tulaliloo poopayee. <span class="applebees">Bappleees</span> bananaaaa po kass butt chasy pepete ti aamoo! Belloo! gelatooo tank yuuu! Poopayee <span class="applebees">bappleees</span> tulaliloo wiiiii. Butt poopayee la bodaaa bappleees la bodaaa potatoooo butt potatoooo tatata bala tu pepete. Para tú aaaaaah hahaha wiiiii ti aamoo! Tulaliloo tank yuuu! Jiji bananaaaa underweaaar. La bodaaa bananaaaa underweaaar la bodaaa underweaaar baboiii tank yuuu! Po kass pepete. Jeje baboiii pepete bee do bee do bee do jiji me want bananaaa! Potatoooo bappleees ti aamoo! Me want bananaaa!</p>
-        <p><span class="applebees">Bappleees</span> poulet tikka masala baboiii jiji. La bodaaa poopayee bananaaaa jeje chasy potatoooo tank yuuu! Hahaha daa daa uuuhhh. Tulaliloo jeje jeje hahaha pepete bappleees me want bananaaa! Chasy jiji potatoooo bananaaaa poopayee hahaha butt bee do bee do bee do ti aamoo! Tatata bala tu. La bodaaa para tú jeje daa ti aamoo! Po kass poopayee uuuhhh po kass daa bee do bee do bee do. Belloo! tulaliloo bee do bee do bee do bee do bee do bee do aaaaaah baboiii baboiii.</p>
-        <h5>Options</h5>
+        <p>Minions ipsum tatata bala tu hahaha pepete tulaliloo poopayee. <span class="applebees cool">Bappleees</span> bananaaaa po kass butt chasy pepete ti aamoo! Belloo! gelatooo tank yuuu! Poopayee <span class="applebees fancy">bappleees</span> tulaliloo wiiiii. Butt poopayee la bodaaa bappleees la bodaaa potatoooo butt potatoooo tatata bala tu pepete. Para tú aaaaaah hahaha wiiiii ti aamoo! Tulaliloo tank yuuu! Jiji bananaaaa underweaaar. La bodaaa bananaaaa underweaaar la bodaaa underweaaar baboiii tank yuuu! Po kass pepete. Jeje baboiii pepete bee do bee do bee do jiji me want bananaaa! Potatoooo bappleees ti aamoo! Me want bananaaa!</p>
+        <p><span class="applebees fancy">Bappleees</span> poulet tikka masala baboiii jiji. La bodaaa poopayee bananaaaa jeje chasy potatoooo tank yuuu! Hahaha daa daa uuuhhh. Tulaliloo jeje jeje hahaha pepete bappleees me want bananaaa! Chasy jiji potatoooo bananaaaa poopayee hahaha butt bee do bee do bee do ti aamoo! Tatata bala tu. La bodaaa para tú jeje daa ti aamoo! Po kass poopayee uuuhhh po kass daa bee do bee do bee do. Belloo! tulaliloo bee do bee do bee do bee do bee do bee do aaaaaah baboiii baboiii.</p>
+        <h5>Options: {{ optionCount }}</h5>
         <ul>
           <li v-for="option in options">
-            {{ option }}
+            This {{ option.name }} is very {{ option.type }}.
           </li>
         </ul>
+        <button v-on:click="removeOption">Remove Option</button>
+        <button v-on:click="addOption({ name: 'Woof', type: 'medium'})">Add Woofer</button>
+        <button v-on:click="addOption({ name: 'Dog', type: 'normal' })">Add Doggo</button>
+        <button v-on:click="addOption({ name: 'Arf', type: 'furry' })">Add Pup</button>
+        <button v-on:click="reverseOptions">Reverse list</button>
       </main>
       <!-- Second page -->
       <main v-bind:hidden="pageName != 'about'">
         <h1>About Us</h1>
-        <p>Here is a bunch of text. This text is <em>important</em>, but is it more important <strong>than this</strong>?</p>
+        <p class="canShowError" v-bind:class="{ hasError: isError }">Here is a bunch of text. This text is <em>important</em>, but is it more important <strong>than this</strong>?</p>
         <p>This is a whole different paragraph.</p>
         <h2>An Ordered List</h2>
         <p>Best dogs</p>
         <ol>
           <li>Bisley</li>
-          <li>Bisley, again</li>
+          <li class="canShowError" v-bind:class="{ hasError: isError }">Bisley, again</li>
           <li>Still Bisley</li>
           <li>Guess what: Bisley</li>
         </ol>
@@ -60,7 +69,12 @@
       <!-- Third page -->
       <main v-bind:hidden="pageName != 'resources'">
         <h1>Resources</h1>
-        <p>This is the resources page.</p>
+        <p>On this page, you can find resources.</p>
+        <h2>Nietzsche Says</h2>
+        <p>Morality marvelous virtues horror salvation ocean. Gains merciful disgust abstract law marvelous enlightenment faithful disgust burying passion abstract right against. Ascetic convictions convictions burying pious decieve. Play christianity christian insofar ultimate. Holiest passion suicide philosophy noble strong good noble burying spirit free.</p>
+        <p class="canShowError" v-bind:class="{ hasError: isError }">Selfish spirit christianity overcome madness overcome zarathustra dead. Value right christian marvelous faith war christianity war. Overcome philosophy free horror inexpedient convictions. Of zarathustra truth right madness god philosophy spirit spirit. Battle merciful ideal contradict enlightenment. Holiest inexpedient aversion revaluation gains ubermensch.</p>
+        <p>Oneself of pinnacle decieve christian truth insofar virtues against selfish. Good passion noble salvation right convictions faith ascetic eternal-return transvaluation sea christian decieve. Pinnacle ultimate sexuality of sexuality derive hope disgust self play. Ascetic pinnacle zarathustra hatred joy moral self love joy transvaluation insofar. Dead fearful ascetic faithful deceptions fearful good. Convictions endless evil holiest morality. Depths good merciful passion victorious convictions oneself war.</p>
+        <p>War madness.</p>
       </main>
       <!-- Fourth page -->
       <main v-bind:hidden="pageName != 'help'">

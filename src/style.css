@@ -1,24 +1,63 @@
-/* @font-face {
-  font-family: "CoolS";
-  src: url("./CoolS-Regular.otf") format("truetype");
-} */
-
-@font-face {
-  font-family: 'Coiny Regular';
-  src: url('../fonts/coiny.ttf');
-  font-weight: 600;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css?family=Miss+Fajardose');
 
 .cool {
   color: red;
-  font-family: 'Coiny Regular';
+  font-family: monospace;
+}
+
+.fancy {
+  color: purple;
+  font-family: 'Miss Fajardose', cursive;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: inherit;
+  }
+}
+
+.animated {
+  animation-duration: 3s;
+  animation-name: fadein;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+p:hover {
+  animation: 3s infinite alternate spin;
+}
+
+.canShowError {
+  transition: color 1s, background-color 2s, border 3s;
+}
+
+.canShowError.hasError {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border: 2px dashed yellow;
 }
 
 html {
+  font-family: 'Open Sans', monospace;
   background: #eee;
   color: #111;
-  font-family: sans-serif;
   font-size: 16px;
   line-height: 1.16em;
 }
