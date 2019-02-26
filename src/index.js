@@ -15,7 +15,12 @@ var app = new Vue({
     firstName: "Steve",
     lastName: "Richey",
     pageName: "home",
-    isError: false
+    isError: false,
+    colorList: ["red", "blue", "green"],
+    emojiList: ["cowboy", "horse", "dolphin"],
+    currentColor: "red",
+    currentEmoji: "cowboy",
+    kittenUrl: 'http://placekitten.com/300/300'
   },
   computed: {
     fullName: function () {
@@ -23,6 +28,9 @@ var app = new Vue({
     },
     optionCount: function () {
       return this.options.length;
+    },
+    fileName: function () {
+      return './images/' + this.currentColor + '_' + this.currentEmoji + '.png';
     }
   },
   methods: {

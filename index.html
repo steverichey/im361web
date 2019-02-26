@@ -25,14 +25,26 @@
       </header>
       <!-- First page -->
       <main v-bind:hidden="pageName != 'home'" class="animated">
-        <h1 class="cool">HOME</h1>
+        <h1 class="cool">HOME, welcome {{ fullName }}</h1>
         <p class="fancy">This is the home page.</p>
         <h4>The minion section</h4>
         <p>Minions ipsum tatata bala tu hahaha pepete tulaliloo poopayee. <span class="applebees cool">Bappleees</span> bananaaaa po kass butt chasy pepete ti aamoo! Belloo! gelatooo tank yuuu! Poopayee <span class="applebees fancy">bappleees</span> tulaliloo wiiiii. Butt poopayee la bodaaa bappleees la bodaaa potatoooo butt potatoooo tatata bala tu pepete. Para tú aaaaaah hahaha wiiiii ti aamoo! Tulaliloo tank yuuu! Jiji bananaaaa underweaaar. La bodaaa bananaaaa underweaaar la bodaaa underweaaar baboiii tank yuuu! Po kass pepete. Jeje baboiii pepete bee do bee do bee do jiji me want bananaaa! Potatoooo bappleees ti aamoo! Me want bananaaa!</p>
         <p><span class="applebees fancy">Bappleees</span> poulet tikka masala baboiii jiji. La bodaaa poopayee bananaaaa jeje chasy potatoooo tank yuuu! Hahaha daa daa uuuhhh. Tulaliloo jeje jeje hahaha pepete bappleees me want bananaaa! Chasy jiji potatoooo bananaaaa poopayee hahaha butt bee do bee do bee do ti aamoo! Tatata bala tu. La bodaaa para tú jeje daa ti aamoo! Po kass poopayee uuuhhh po kass daa bee do bee do bee do. Belloo! tulaliloo bee do bee do bee do bee do bee do bee do aaaaaah baboiii baboiii.</p>
-        <h5>Options: {{ optionCount }}</h5>
+        <select v-model="currentColor">
+          <option v-for="color in colorList" v-bind:value="color">
+            {{ color }}
+          </option>
+        </select>
+        <p>Selected: {{ currentColor }}</p>
+        <select v-model="currentEmoji">
+          <option v-for="emoji in emojiList" v-bind:value="emoji">
+            {{ emoji }}
+          </option>
+        </select>
+        <p>Selected: {{ currentEmoji }}</p>
+        <h5 class="cool">Options: {{ optionCount }}</h5>
         <ul>
-          <li v-for="option in options">
+          <li v-for="option in options" v-bind:class="option.type">
             This {{ option.name }} is very {{ option.type }}.
           </li>
         </ul>
@@ -71,9 +83,9 @@
         <h1>Resources</h1>
         <p>On this page, you can find resources.</p>
         <h2>Nietzsche Says</h2>
-        <p>Morality marvelous virtues horror salvation ocean. Gains merciful disgust abstract law marvelous enlightenment faithful disgust burying passion abstract right against. Ascetic convictions convictions burying pious decieve. Play christianity christian insofar ultimate. Holiest passion suicide philosophy noble strong good noble burying spirit free.</p>
+        <p class="inverted">Morality marvelous virtues horror salvation ocean. Gains merciful disgust abstract law marvelous enlightenment faithful disgust burying passion abstract right against. Ascetic convictions convictions burying pious decieve. Play christianity christian insofar ultimate. Holiest passion suicide philosophy noble strong good noble burying spirit free.</p>
         <p class="canShowError" v-bind:class="{ hasError: isError }">Selfish spirit christianity overcome madness overcome zarathustra dead. Value right christian marvelous faith war christianity war. Overcome philosophy free horror inexpedient convictions. Of zarathustra truth right madness god philosophy spirit spirit. Battle merciful ideal contradict enlightenment. Holiest inexpedient aversion revaluation gains ubermensch.</p>
-        <p>Oneself of pinnacle decieve christian truth insofar virtues against selfish. Good passion noble salvation right convictions faith ascetic eternal-return transvaluation sea christian decieve. Pinnacle ultimate sexuality of sexuality derive hope disgust self play. Ascetic pinnacle zarathustra hatred joy moral self love joy transvaluation insofar. Dead fearful ascetic faithful deceptions fearful good. Convictions endless evil holiest morality. Depths good merciful passion victorious convictions oneself war.</p>
+        <p class="blurry">Oneself of pinnacle decieve christian truth insofar virtues against selfish. Good passion noble salvation right convictions faith ascetic eternal-return transvaluation sea christian decieve. Pinnacle ultimate sexuality of sexuality derive hope disgust self play. Ascetic pinnacle zarathustra hatred joy moral self love joy transvaluation insofar. Dead fearful ascetic faithful deceptions fearful good. Convictions endless evil holiest morality. Depths good merciful passion victorious convictions oneself war.</p>
         <p>War madness.</p>
       </main>
       <!-- Fourth page -->
@@ -81,7 +93,7 @@
         <h1>Help</h1>
         <p>This is the help page.</p>
       </main>
-      <footer>
+      <footer class="rainbow" v-bind:style="{ backgroundImage: 'url(' + fileName + ')' }">
         You can blame this site on me, Steve.
       </footer>
     </div>
