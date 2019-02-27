@@ -90,8 +90,19 @@
       </main>
       <!-- Fourth page -->
       <main v-bind:hidden="pageName != 'help'">
-        <h1>Help</h1>
-        <p>This is the help page.</p>
+        <h1>Quiz</h1>
+        <p>You have answered {{ quizScore }} out of {{ numberOfQuizQuestions }} questions correctly.</p>
+        <p>Your score is {{ quizPercent }}%</p>
+        <ol>
+          <li v-for="question in quizQuestions">
+            <h2>{{ question.question }}</h2>
+            <ul>
+              <li v-for="answer in question.answers">
+                <button v-bind:disabled="answeredQuestions.includes(question.number)" v-on:click="submitAnswer(question, answer)">{{ answer }}</button>
+              </li>
+            </ul>
+          </li>
+        </ol>
       </main>
       <footer class="rainbow" v-bind:style="{ backgroundImage: 'url(' + fileName + ')' }">
         You can blame this site on me, Steve.
