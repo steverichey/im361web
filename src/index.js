@@ -46,7 +46,10 @@ var app = new Vue({
     emojiList: ["cowboy", "horse", "dolphin"],
     currentColor: "red",
     currentEmoji: "cowboy",
-    kittenUrl: 'http://placekitten.com/300/300'
+    kittenUrl: 'http://placekitten.com/300/300',
+    schedules: [],
+    currentName: "",
+    currentTodo: ""
   },
   computed: {
     fullName: function () {
@@ -81,6 +84,23 @@ var app = new Vue({
       }
 
       this.answeredQuestions.push(question.number);
+    },
+    createSchedule: function(selectedReminji, scheduleName) {
+      this.schedules.push({
+        reminji: selectedReminji,
+        name: scheduleName,
+        todos: []
+      });
+    },
+    addTodo: function(schedule, todo) {
+      schedule.todos.push(todo);
+    },
+    removeTodo: function(schedule, todo) {
+      var index = schedule.todos.indexOf(todo);
+
+      if (index >= 0) {
+        schedule.todos.splice(index, 1);
+      }
     }
   }
 });

@@ -56,6 +56,10 @@
       </main>
       <!-- Second page -->
       <main v-bind:hidden="pageName != 'about'">
+        <h1>Image Example</h1>
+        <div class="imagecontainer">
+          <img v-bind:src="fileName">
+        </div>
         <h1>About Us</h1>
         <p class="canShowError" v-bind:class="{ hasError: isError }">Here is a bunch of text. This text is <em>important</em>, but is it more important <strong>than this</strong>?</p>
         <p>This is a whole different paragraph.</p>
@@ -81,6 +85,24 @@
       <!-- Third page -->
       <main v-bind:hidden="pageName != 'resources'">
         <h1>Resources</h1>
+        <h2>Schedules</h2>
+        <input v-model="currentName">
+        <button v-on:click="createSchedule('starby', currentName)">Submit</button>
+        <h3>Current Schedules</h3>
+        <ul>
+          <li v-for="schedule in schedules">
+            <p>Reminj: {{ schedule.reminji }}</p>
+            <P>Name: {{ schedule.name }}</p>
+            <p><input v-model="currentTodo"></p>
+            <p><button v-on:click="addTodo(schedule, currentTodo)">Add</button></p>
+            <ul>
+              <li v-for="todo in schedule.todos">
+                <p>{{ todo }}</p>
+                <p><button v-on:click="removeTodo(schedule, todo)">Remove</button</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
         <p>On this page, you can find resources.</p>
         <h2>Nietzsche Says</h2>
         <p class="inverted">Morality marvelous virtues horror salvation ocean. Gains merciful disgust abstract law marvelous enlightenment faithful disgust burying passion abstract right against. Ascetic convictions convictions burying pious decieve. Play christianity christian insofar ultimate. Holiest passion suicide philosophy noble strong good noble burying spirit free.</p>

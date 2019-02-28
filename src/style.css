@@ -30,9 +30,9 @@
     transform: rotate(0deg);
   }
 
-  50% {
+  /* 50% {
     transform: rotate(180deg);
-  }
+  } */
 
   to {
     transform: rotate(0deg);
@@ -127,6 +127,10 @@ li.furry {
 
 .blurry {
   filter: blur(2px);
+}
+
+.imagecontainer img {
+  filter: brightness(604%);
 }
 
 footer {
