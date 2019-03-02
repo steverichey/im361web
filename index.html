@@ -20,6 +20,7 @@
             <li><a href="#about" v-on:click="pageName = 'about'">About</a></li>
             <li><a href="#resources" v-on:click="pageName = 'resources'">Resources</a></li>
             <li><a href="#help" v-on:click="pageName = 'help'">Help</a></li>
+            <li><a href="#cart" v-on:click="pageName = 'cart'">Cart</a></li>
           </ul>
         </nav>
       </header>
@@ -58,7 +59,7 @@
       <main v-bind:hidden="pageName != 'about'">
         <h1>Image Example</h1>
         <div class="imagecontainer">
-          <img v-bind:src="fileName">
+          <img v-bind:src="fileName" v-bind:title="randomlyGeneratedTitle" v-on:mouseover="makeNewTitle()">
         </div>
         <h1>About Us</h1>
         <p class="canShowError" v-bind:class="{ hasError: isError }">Here is a bunch of text. This text is <em>important</em>, but is it more important <strong>than this</strong>?</p>
@@ -88,21 +89,29 @@
         <h2>Schedules</h2>
         <input v-model="currentName">
         <button v-on:click="createSchedule('starby', currentName)">Submit</button>
-        <h3>Current Schedules</h3>
-        <ul>
-          <li v-for="schedule in schedules">
-            <p>Reminj: {{ schedule.reminji }}</p>
-            <P>Name: {{ schedule.name }}</p>
-            <p><input v-model="currentTodo"></p>
-            <p><button v-on:click="addTodo(schedule, currentTodo)">Add</button></p>
-            <ul>
-              <li v-for="todo in schedule.todos">
-                <p>{{ todo }}</p>
-                <p><button v-on:click="removeTodo(schedule, todo)">Remove</button</p>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <div class="allschedules" v-if="hasSchedules">
+          <h3>Current Schedules: {{ numberOfSchedules }}</h3>
+          <select v-model="selectedSchedule">
+            <option v-for="schedule in schedules" v-bind:value="schedule">
+              {{ schedule.name }}
+            </option>
+          </select>
+          <ul>
+            <li v-for="schedule in schedules" v-bind:hidden="selectedSchedule != schedule">
+              <p>Reminj: {{ schedule.reminji }}</p>
+              <P>Name: {{ schedule.name }}</p>
+              <p><input v-model="currentTodo"></p>
+              <p><button v-on:click="addTodo(schedule, currentTodo)">Add</button></p>
+              <ul>
+                <li v-for="todo in schedule.todos">
+                  <p>{{ todo }}</p>
+                  <p><button v-on:click="removeTodo(schedule, todo)">Remove</button</p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div v-else>No schedules</div>
         <p>On this page, you can find resources.</p>
         <h2>Nietzsche Says</h2>
         <p class="inverted">Morality marvelous virtues horror salvation ocean. Gains merciful disgust abstract law marvelous enlightenment faithful disgust burying passion abstract right against. Ascetic convictions convictions burying pious decieve. Play christianity christian insofar ultimate. Holiest passion suicide philosophy noble strong good noble burying spirit free.</p>
@@ -125,6 +134,20 @@
             </ul>
           </li>
         </ol>
+      </main>
+      <!-- Fifth page -->
+      <main v-bind:hidden="pageName != 'cart'">
+        <h2>Buy</h2>
+        <button v-on:click="addToCart('Coffee', 2)">Coffee $2</button>
+        <button v-on:click="addToCart('Latte', 5)">Latte $5</button>
+        <button v-on:click="addToCart('Cappucino', 4)">Cap $4</button>
+        <h3>Items in cart</h3>
+        <ul>
+          <li v-for="item in cart">
+            {{ item.name }} ${{ item.cost}}
+          </li>
+        </ul>
+        <h3>Total: ${{ cartTotal }}.00</h3>
       </main>
       <footer class="rainbow" v-bind:style="{ backgroundImage: 'url(' + fileName + ')' }">
         You can blame this site on me, Steve.

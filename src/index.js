@@ -48,8 +48,12 @@ var app = new Vue({
     currentEmoji: "cowboy",
     kittenUrl: 'http://placekitten.com/300/300',
     schedules: [],
+    selectedSchedule: "",
     currentName: "",
-    currentTodo: ""
+    currentTodo: "",
+    cart: [],
+    randomTitles: ["henlo", "fren", "mac & me"],
+    randomTitleIndex: 0
   },
   computed: {
     fullName: function () {
@@ -66,6 +70,24 @@ var app = new Vue({
     },
     quizPercent: function () {
       return Math.round((this.quizScore / this.numberOfQuizQuestions) * 100);
+    },
+    numberOfSchedules: function() {
+      return this.schedules.length;
+    },
+    hasSchedules: function() {
+      return this.schedules.length > 0;
+    },
+    cartTotal: function() {
+      var total = 0;
+
+      for (var i = 0; i < this.cart.length; i++) {
+        total += this.cart[i].cost;
+      }
+
+      return total;
+    },
+    randomlyGeneratedTitle: function() {
+      return this.randomTitles[this.randomTitleIndex];
     }
   },
   methods: {
@@ -101,6 +123,15 @@ var app = new Vue({
       if (index >= 0) {
         schedule.todos.splice(index, 1);
       }
+    },
+    makeNewTitle: function() {
+      this.randomTitleIndex = Math.floor(Math.random() * this.randomTitles.length);
+    },
+    addToCart: function(name, cost) {
+      this.cart.push({
+        name: name,
+        cost: cost
+      })
     }
   }
 });
